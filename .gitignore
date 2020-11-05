@@ -18,8 +18,6 @@ out/
 *.iml
 *.ucls
 vendor/
-composer.lock
-package-lock.json
 test.php
 composer.phar
 node_modules/
