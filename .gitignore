@@ -22,6 +22,7 @@ test.php
 composer.phar
 node_modules/
 *.ini
+mysqldata
 
 # External tool builders
 .externalToolBuilders/
