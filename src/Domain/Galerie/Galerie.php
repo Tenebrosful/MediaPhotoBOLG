@@ -51,4 +51,12 @@ class Galerie extends Model
     {
         return $this->belongsToMany("App\Domain\User\User", "usergalerie", "id_galerie", "id_user")->get();
     }
+
+    /**
+     * @return Collection Liste des mots clefs de la galerie
+     */
+    function motsclefs()
+    {
+        return $this->belongsToMany("App\Domain\MotClef\MotClef", "motclefgalerie", "id_galerie", "id_mot")->get();
+    }
 }
