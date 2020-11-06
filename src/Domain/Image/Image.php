@@ -35,4 +35,13 @@ class Image extends Model
      * @var array
      */
     protected $hidden = [];
+
+    /**
+     * @param int $id Id de l' image
+     * @return Image Image correspondant à l'id passé en paramètre
+     */
+    static function getById(int $id): Image
+    {
+        return Image::find($id)->get();
+    }
 }
