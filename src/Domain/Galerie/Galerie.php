@@ -2,6 +2,7 @@
 
 namespace App\Domain\Galerie;
 
+use App\Domain\User\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
@@ -66,5 +67,13 @@ class Galerie extends Model
     function images()
     {
         return $this->belongsToMany("App\Domain\Image\Image", "imagegalerie", "id_galerie", "id_image")->get();
+    }
+
+    /**
+     * @return User Créateur de la galerie
+     */
+    function owner()
+    {
+        return User::getById($this->id_owner);
     }
 }
