@@ -42,4 +42,13 @@ class User extends Model
     {
         return User::find($id)->get();
     }
+
+    /**
+     * @param string $identifiant Identifiant de l'utilisateur
+     * @return User Utilisateur correspondant (l'identifiant étant unique dans la bdd)
+     */
+    static function getByIdentifiant(string $identifiant): User
+    {
+        return User::where("identifiant", "=", $identifiant)->get();
+    }
 }
