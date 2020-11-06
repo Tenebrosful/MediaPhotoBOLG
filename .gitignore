@@ -23,6 +23,7 @@ composer.phar
 node_modules/
 *.ini
 mysqldata
+docker-compose.env
 
 # External tool builders
 .externalToolBuilders/
