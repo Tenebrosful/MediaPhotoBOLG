@@ -2,6 +2,7 @@
 
 namespace App\Domain\Galerie;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -41,5 +42,13 @@ class Galerie extends Model
     static function getById(int $id): Galerie
     {
         return Galerie::find($id)->get();
+    }
+
+    /**
+     * @return Collection Liste des utilisateurs de la galerie
+     */
+    function users()
+    {
+        return $this->belongsToMany("App\Domain\User\User", "usergalerie", "id_galerie", "id_user")->get();
     }
 }
