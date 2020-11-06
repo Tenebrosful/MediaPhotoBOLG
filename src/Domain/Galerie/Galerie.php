@@ -59,4 +59,12 @@ class Galerie extends Model
     {
         return $this->belongsToMany("App\Domain\MotClef\MotClef", "motclefgalerie", "id_galerie", "id_mot")->get();
     }
+
+    /**
+     * @return Collection Liste des images de la galerie
+     */
+    function images()
+    {
+        return $this->belongsToMany("App\Domain\Image\Image", "imagegalerie", "id_galerie", "id_image")->get();
+    }
 }
