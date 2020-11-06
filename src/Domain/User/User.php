@@ -34,4 +34,12 @@ class User extends Model
      */
     protected $hidden = ['password'];
 
+    /**
+     * @param int $id Id de l'utilisateur
+     * @return User Utilisateur correspondant à l'id passé en paramètre
+     */
+    static function getById(int $id): User
+    {
+        return User::find($id)->get();
+    }
 }
