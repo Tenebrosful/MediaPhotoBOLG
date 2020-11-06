@@ -44,4 +44,13 @@ class MotClef extends Model
     {
         return MotClef::find($id)->get();
     }
+
+    /**
+     * @return Collection Liste des galeries ayant le mot clef
+     */
+    function galeries()
+    {
+        return $this->belongsToMany("App\Domain\Galerie\Galerie", "motclefgalerie", "id_mot", "id_galerie")->get();
+    }
+
 }
