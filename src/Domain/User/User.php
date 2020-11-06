@@ -51,4 +51,13 @@ class User extends Model
     {
         return User::where("identifiant", "=", $identifiant)->get();
     }
+
+    /**
+     * @param string $email Email de l'utilisateur
+     * @return User Utilisateur correspondant (l'email étant unique dans la bdd)
+     */
+    static function getByEmail(string $email): User
+    {
+        return User::where("email", "=", $email)->get();
+    }
 }
