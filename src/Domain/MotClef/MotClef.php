@@ -4,6 +4,7 @@
 namespace App\Domain\MotClef;
 
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -51,6 +52,14 @@ class MotClef extends Model
     function galeries()
     {
         return $this->belongsToMany("App\Domain\Galerie\Galerie", "motclefgalerie", "id_mot", "id_galerie")->get();
+    }
+
+    /**
+     * @return Collection Liste des images ayant le mot clef
+     */
+    function images()
+    {
+        return $this->belongsToMany("App\Domain\Image\Image", "motclefimage", "id_mot", "id_image")->get();
     }
 
 }
