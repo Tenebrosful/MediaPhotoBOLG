@@ -4,6 +4,10 @@ namespace App\Domain\Galerie;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static where(string $colonne, string $comparateur, mixed $valeur)
+ * @method static find(int $id)
+ */
 class Galerie extends Model
 {
     /**
