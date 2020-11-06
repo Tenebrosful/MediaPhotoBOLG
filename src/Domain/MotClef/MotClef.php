@@ -35,4 +35,13 @@ class MotClef extends Model
      * @var array
      */
     protected $hidden = [];
+
+    /**
+     * @param int $id Id du mot clef
+     * @return MotClef Mot clef correspondant à l'id passé en paramètre
+     */
+    static function getById(int $id): MotClef
+    {
+        return MotClef::find($id)->get();
+    }
 }
