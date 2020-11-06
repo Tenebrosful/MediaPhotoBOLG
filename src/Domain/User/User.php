@@ -2,6 +2,7 @@
 
 namespace App\Domain\User;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -59,5 +60,13 @@ class User extends Model
     static function getByEmail(string $email): User
     {
         return User::where("email", "=", $email)->get();
+    }
+
+    /**
+     * @return Collection Liste des galeries de l'utilisateur (Créateur ou partagé)
+     */
+    function galeries()
+    {
+        return $this->belongsToMany("App\Domain\Galerie\Galerie", "usergalerie", "id_user", "id_galerie")->get();
     }
 }
