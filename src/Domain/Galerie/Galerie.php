@@ -33,4 +33,13 @@ class Galerie extends Model
      * @var array
      */
     protected $hidden = [];
+
+    /**
+     * @param int $id Id de la galerie
+     * @return Galerie Galerie correspondant à l'id passé en paramètre
+     */
+    static function getById(int $id): Galerie
+    {
+        return Galerie::find($id)->get();
+    }
 }
