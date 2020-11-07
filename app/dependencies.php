@@ -24,5 +24,10 @@ return function (ContainerBuilder $containerBuilder) {
 
             return $logger;
         },
+        \Twig\Environment::class => function(ContainerInterface $c) {
+            $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '../view');
+            $twig = new \Slim\Views\Twig($loader, [__DIR__ . '../var/cache']);
+            return $twig;
+        }
     ]);
 };
