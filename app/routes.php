@@ -29,8 +29,20 @@ return function (App $app) {
 
     $app->get('/home', HomeAction::class);
 
-    $app->get('/profil', ViewProfilAction::class);
-    $app->post('/profil', UpdateProfilAction::class);
+    $app->group('/login', function(Group $group){
+        $group->get('', ViewLoginAction::class);
+        $group->post('', LoginAction::class);
+    });
+
+    $app->group('/signup', function(Group $group){
+        $group->get('', ViewSignupAction::class);
+        $group->post('', SignupAction::class);
+    });
+
+    $app->group('/profil', function(Group $group){
+        $group->get('', ViewProfilAction::class);
+        $group->post('', UpdateProfilAction::class);
+    });
 
     $app->group("/galeries", function(Group $group) {
         $group->get('', ListGalerieAction::class);
