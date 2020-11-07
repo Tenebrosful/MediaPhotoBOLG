@@ -33,11 +33,18 @@ abstract class Action
     protected $args;
 
     /**
-     * @param LoggerInterface $logger
+     * @twig Environment
      */
-    public function __construct(LoggerInterface $logger)
+    protected $twig;
+
+    /**
+     * @param LoggerInterface $logger
+     * @param \Twig\Environment $twig
+     */
+    public function __construct(LoggerInterface $logger, \Twig\Environment $twig)
     {
         $this->logger = $logger;
+        $this->twig = $twig;
     }
 
     /**
