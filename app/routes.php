@@ -4,8 +4,6 @@ declare(strict_types=1);
 use App\Application\Actions\User\ListUsersAction;
 use App\Application\Actions\User\ViewUserAction;
 
-use App\Application\Actions\Galerie\ListGalerieAction;
-
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\App;
@@ -33,6 +31,8 @@ return function (App $app) {
         $group->get('', ViewLoginAction::class);
         $group->post('', LoginAction::class);
     });
+
+    $app->post('/disconnect', DisconnectAction::class);
 
     $app->group('/signup', function(Group $group){
         $group->get('', ViewSignupAction::class);
