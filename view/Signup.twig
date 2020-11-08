@@ -1,0 +1,22 @@
+{% extends "base.twig" %}
+{% block content %}
+    <form class="signup" method="POST">
+        <div>
+            <label for="login">Nom de compte:</label>
+            <input type="text" name="login" id="login" required>
+        </div>
+        <div>
+            <label for="password">Mot de passe:</label>
+            <input type="password" name="password" id="password" required>
+        </div>
+        <div>
+            <label for="passwordConfirmation">Confirmer le mot de passe:</label>
+            <input type="password" name="passwordConfirmation" id="passwordConfirmation" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email">
+        </div>
+        <input type="submit" value="S'incrire">
+    </form>
+{% endblock %}
