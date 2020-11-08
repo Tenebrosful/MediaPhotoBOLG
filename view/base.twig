@@ -1,0 +1,32 @@
+<!-- Template -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Informations sur le site -->
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Mediaphoto</title>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="home">Home</a></li>
+        <li><a href="galeries">Galeries</a></li>
+        {% if user %}
+            <li class="deroulant"><a href="#">{{ user.login }}</a>
+                <ul class="sous">
+                    <li><a href="profil">Profil</a></li>
+                    <li><a href="deconnection">Deconnection</a></li>
+                </ul>
+            </li>
+        {% else %}
+            <li><a href="login">Se connecter</a></li>
+            <li><a href="signup">S'inscire</a></li>
+        {% endif %}
+    </ul>
+</nav>
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>
