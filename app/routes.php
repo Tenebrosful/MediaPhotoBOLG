@@ -44,15 +44,16 @@ return function (App $app) {
         $group->post('', UpdateProfilAction::class);
     });
 
-    $app->group("/galeries", function(Group $group) {
-        $group->get('', ListGalerieAction::class);
+    $app->get("galeries", ListGalerieAction::class);
+
+    $app->group("/galerie", function(Group $group) {
         $group->get('/{id}', ViewGalerieAction::class);
 
         $group->get('/{id}/settings', SettingGalerieAction::class);
         $group->post('/{id}/settings', UpdateGalerieAction::class);
         $group->delete('/{id}/settings', DeleteGalerieAction::class);
 
-        $group->get('/{id}/page/{page}', ListGaleriePhotoAction::class);
+        $group->get('/{id}/photos', ListGaleriePhotoAction::class);
 
         $group->get('/{id}/photo/{photo}', ViewPhotoAction::class);
 
