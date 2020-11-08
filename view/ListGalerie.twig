@@ -3,7 +3,7 @@
     <div class="galerie-list">
     {% if galeries %}
         {% for galerie in galeries %}
-            <div class="galerie-item" href={{ "/galerie/"+galerie.id }}>
+            <div class="galerie-item" href={{ "/galerie /"+galerie.id }}>
                 <img src="{{ galerie.getThumbnail().url }}" alt="">
                 <div>
                     <h3>{{ galerie.nom }}</h3>

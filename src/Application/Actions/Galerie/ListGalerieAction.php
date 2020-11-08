@@ -19,6 +19,9 @@ class ListGalerieAction extends Action
      */
     protected function action(): Response
     {
-        return $this->view->render($this->response, 'ListGalerie.twig', null);
+        $this->response->getBody()->write(
+            $this->twig->render('ListGalerie.twig', array())
+        );
+        return $this->response;
     }
 }
