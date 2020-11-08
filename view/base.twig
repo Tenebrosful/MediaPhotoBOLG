@@ -12,8 +12,8 @@
     <ul>
         <li><a href="home">Home</a></li>
         <li><a href="galeries">Galeries</a></li>
-        {% if user %}
-            <li class="deroulant"><a href="#">{{ user.login }}</a>
+        {% if session.user %}
+            <li class="deroulant"><a href="#">{{ session.user.login }}</a>
                 <ul class="sous">
                     <li><a href="profil">Profil</a></li>
                     <li><a href="deconnection">Deconnection</a></li>
