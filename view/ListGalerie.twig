@@ -1,1 +1,17 @@
-<h1>Hello World!</h1>
+{% extends "base.twig" %}
+{% block content %}
+    <div class="galerie-list">
+    {% if galeries %}
+        {% for galerie in galeries %}
+            <div class="galerie-item" href={{ "/galerie/"+galerie.id }}>
+                <img src="{{ galerie.getThumbnail().url }}" alt="">
+                <div>
+                    <h3>{{ galerie.nom }}</h3>
+                    <p>Nombre de photo(s): {{ galerie.photoCount() }}</p>
+                    <p>Description: {{ galerie.description }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+{% endblock %}
