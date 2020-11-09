@@ -9,7 +9,7 @@ use App\Domain\DomainException\DomainRecordNotFoundException;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Exception\HttpBadRequestException;
 
-use App\Domain\User;
+use App\Domain\User\User;
 
 class SignupAction extends Action
 {

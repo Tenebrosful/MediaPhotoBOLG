@@ -22,7 +22,7 @@ class HomeAction extends Action
     protected function action(): Response
     {
         $this->response->getBody()->write(
-            $this->twig->render('Home.twig', array("galeries"=>Galerie::inRandomOrder()->limit(5)->get()))
+            $this->twig->render('Home.twig', array())
         );
         return $this->response;
     }

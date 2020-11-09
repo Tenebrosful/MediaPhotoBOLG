@@ -7,6 +7,7 @@ use App\Application\ResponseEmitter\ResponseEmitter;
 use DI\ContainerBuilder;
 use Slim\Factory\AppFactory;
 use Slim\Factory\ServerRequestCreatorFactory;
+use Illuminate\Database\Capsule\Manager as Capsule;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -71,3 +72,18 @@ $errorMiddleware->setDefaultErrorHandler($errorHandler);
 $response = $app->handle($request);
 $responseEmitter = new ResponseEmitter();
 $responseEmitter->emit($response);
+
+$capsule = new Capsule;
+
+if (is_array($bddConfig = parse_ini_file(__DIR__.'/../config/bdd.ini')))
+    $capsule->addConnection($bddConfig);
+else {
+    echo "ERREUR : Fichier de configuration de la base de donnée introuvable";
+    exit();
+}
+
+// Make this Capsule instance available globally
+$capsule->setAsGlobal();
+
+// Setup the Eloquent ORM.
+$capsule->bootEloquent();
