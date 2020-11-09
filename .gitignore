@@ -21,7 +21,6 @@ vendor/
 test.php
 composer.phar
 node_modules/
-*.ini
 mysqldata
 *.lock
 
