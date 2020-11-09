@@ -24,6 +24,7 @@ use App\Application\Actions\Photo\DeletePhotoAction;
 use App\Application\Actions\Photo\ListGaleriePhotoAction;
 use App\Application\Actions\Photo\UpdatePhotoAction;
 use App\Application\Actions\Photo\ViewPhotoAction;
+use App\Application\Actions\Photo\SettingPhotoAction;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -78,7 +79,7 @@ return function (App $app) {
 
         $group->get('/{id}/photo/{photo}', ViewPhotoAction::class);
 
-        $group->get('/{id}/photo/{photo}/settings', ViewPhotoAction::class);
+        $group->get('/{id}/photo/{photo}/settings', SettingPhotoAction::class);
         $group->post('/{id}/photo/{photo}/settings', UpdatePhotoAction::class);
         $group->delete('/{id}/photo/{photo}/settings', DeletePhotoAction::class);
     });
