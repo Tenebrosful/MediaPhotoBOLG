@@ -20,6 +20,15 @@ class ViewLoginAction extends Action
      */
     protected function action(): Response
     {
-        // TODO: Implement action() method.
+        if (isset($_SESSION['user'])) {
+            $this->response->getBody()->write(
+                $this->twig->render('Home.twig', array())
+            );
+        } else {
+            $this->response->getBody()->write(
+                $this->twig->render('Login.twig', array())
+            );
+        }
+        return $this->response;
     }
 }
