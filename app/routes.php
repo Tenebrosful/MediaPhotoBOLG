@@ -39,7 +39,7 @@ return function (App $app) {
     });
 
     $app->get('/', function (Request $request, Response $response) {
-        return $this->response->withHeader('location', 'home');
+        return $response->withHeader('location', 'home');
     });
 /*
     $app->group('/users', function (Group $group) {
