@@ -50,19 +50,19 @@ return function (App $app) {
     $app->get('/home', HomeAction::class)->setName('home');
 
     $app->group('/login', function(Group $group){
-        $group->get('', ViewLoginAction::class);
+        $group->get('', ViewLoginAction::class)->setName('login');
         $group->post('', LoginAction::class);
     });
 
     $app->post('/disconnect', DisconnectAction::class);
 
     $app->group('/signup', function(Group $group){
-        $group->get('', ViewSignupAction::class);
+        $group->get('', ViewSignupAction::class)->setName('signup');
         $group->post('', SignupAction::class);
     });
 
     $app->group('/profil', function(Group $group){
-        $group->get('', ViewProfilAction::class);
+        $group->get('', ViewProfilAction::class)->setName('profil');
         $group->post('', UpdateProfilAction::class);
     });
 

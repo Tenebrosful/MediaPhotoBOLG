@@ -20,6 +20,12 @@ class DisconnectAction extends Action
      */
     protected function action(): Response
     {
-        // TODO: Implement action() method.
+        if(isset($_SESSION['user'])){
+            unset($_SESSION['user']);
+            session_destroy();
+            session_start();
+            $this->response->withHeader('location', 'login');
+        }
+        return $this->response;
     }
 }
