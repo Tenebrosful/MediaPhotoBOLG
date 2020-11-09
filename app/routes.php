@@ -48,7 +48,7 @@ return function (App $app) {
         $group->post('', LoginAction::class);
     });
 
-    $app->post('/disconnect', DisconnectAction::class)->add(LoggedMiddleware::class);
+    $app->get('/disconnect', DisconnectAction::class)->add(LoggedMiddleware::class)->setName('disconnect');
 
     $app->group('/signup', function(Group $group){
         $group->get('', ViewSignupAction::class)->setName('signup');
