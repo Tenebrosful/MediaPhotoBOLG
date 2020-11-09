@@ -12,8 +12,6 @@ use App\Application\Actions\Photo\ListGaleriePhotoAction;
 use App\Application\Actions\Photo\SettingPhotoAction;
 use App\Application\Actions\Photo\UpdatePhotoAction;
 use App\Application\Actions\Photo\ViewPhotoAction;
-use App\Application\Actions\User\ListUsersAction;
-use App\Application\Actions\User\ViewUserAction;
 use App\Application\Actions\UserConnection\DisconnectAction;
 use App\Application\Actions\UserConnection\LoginAction;
 use App\Application\Actions\UserConnection\SignupAction;
