@@ -11,6 +11,8 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 
 require __DIR__ . '/../vendor/autoload.php';
 
+session_start();
+
 $capsule = new Capsule;
 
 if (is_array($bddConfig = parse_ini_file(__DIR__.'/../config/bdd.ini')))

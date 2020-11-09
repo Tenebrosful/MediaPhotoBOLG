@@ -27,6 +27,7 @@ return function (ContainerBuilder $containerBuilder) {
         \Twig\Environment::class => function(ContainerInterface $c) {
             $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../view');
             $twig = new \Twig\Environment($loader, [__DIR__ . '/../var/cache']);
+            $twig->addGlobal('session', $_SESSION);
             return $twig;
         }
     ]);
