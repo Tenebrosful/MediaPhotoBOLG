@@ -9,3 +9,10 @@
 * port=
 * charset=
 * collation=
+
+## Exemple via docker
+* driver=mysql
+* username=bolg
+* password=pass
+* host=mysql
+* database=bolg
