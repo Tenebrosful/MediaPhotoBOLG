@@ -64,7 +64,7 @@ return function (App $app) {
     $app->group('/profil', function(Group $group){
         $group->get('', ViewProfilAction::class)->setName('profil');
         $group->post('', UpdateProfilAction::class);
-    });
+    })->add(LoggedMiddleware::class);
 
     $app->get("/galeries", ListGalerieAction::class);
 
