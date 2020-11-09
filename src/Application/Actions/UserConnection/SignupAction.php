@@ -15,6 +15,7 @@ class SignupAction extends Action
 {
 
     /**
+     * route: POST /signup
      * @return Response
      * @throws DomainRecordNotFoundException
      * @throws HttpBadRequestException

@@ -13,6 +13,7 @@ class ListGalerieAction extends Action
 {
 
     /**
+     * route: GET /galeries   ?page={page} (optionnel)
      * @return Response
      * @throws DomainRecordNotFoundException
      * @throws HttpBadRequestException

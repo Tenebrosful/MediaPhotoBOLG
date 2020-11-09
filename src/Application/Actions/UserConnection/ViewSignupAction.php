@@ -13,6 +13,7 @@ class ViewSignupAction extends Action
 {
 
     /**
+     * route: GET /signup
      * @return Response
      * @throws DomainRecordNotFoundException
      * @throws HttpBadRequestException

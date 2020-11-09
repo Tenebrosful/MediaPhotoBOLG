@@ -3,10 +3,27 @@ declare(strict_types=1);
 
 use App\Application\Actions\User\ListUsersAction;
 use App\Application\Actions\User\ViewUserAction;
+
 use App\Application\Actions\Galerie\ListGalerieAction;
 use App\Application\Actions\Galerie\HomeAction;
+use App\Application\Actions\Galerie\DeleteGalerieAction;
+use App\Application\Actions\Galerie\SettingGalerieAction;
+use App\Application\Actions\Galerie\UpdateGalerieAction;
+use App\Application\Actions\Galerie\ViewGalerieAction;
+
 use App\Application\Actions\UserConnection\ViewSignupAction;
 use App\Application\Actions\UserConnection\SignupAction;
+use App\Application\Actions\UserConnection\ViewLoginAction;
+use App\Application\Actions\UserConnection\LoginAction;
+use App\Application\Actions\UserConnection\DisconnectAction;
+
+use App\Application\Actions\UserProfil\UpdateProfilAction;
+use App\Application\Actions\UserProfil\ViewProfilAction;
+
+use App\Application\Actions\Photo\DeletePhotoAction;
+use App\Application\Actions\Photo\ListGaleriePhotoAction;
+use App\Application\Actions\Photo\UpdatePhotoAction;
+use App\Application\Actions\Photo\ViewPhotoAction;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -23,12 +40,12 @@ return function (App $app) {
     $app->get('/', function (Request $request, Response $response) {
         return $this->response->withHeader('location', 'home');
     });
-
+/*
     $app->group('/users', function (Group $group) {
         $group->get('', ListUsersAction::class);
         $group->get('/{id}', ViewUserAction::class);
     });
-
+*/
     $app->get('/home', HomeAction::class)->setName('home');
 
     $app->group('/login', function(Group $group){
