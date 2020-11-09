@@ -30,7 +30,7 @@ class SignupAction extends Action
                     $login = $_POST['login'];
                     if (User::getByIdentifiant($login) == null) {
                         $user = new User;
-                        $user->login = $login;
+                        $user->identifiant = $login;
                         $user->password = password_hash($_POST['password'], PASSWORD_BCRYPT);
                         $user->email = $_POST['email'];
                         $user->save();

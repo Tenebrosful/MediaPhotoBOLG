@@ -32,17 +32,17 @@ class LoginAction extends Action
 
                 if($user!=null && password_verify($password, $user->password)) {
                     $_SESSION['user']=$user;
-                    $this->response->withHeader('location', 'home');
+                    return $this->response->withHeader('location', 'home');
                 }
                 else {
                     $this->response->getBody()->write(
-                        $this->view->render('Login.twig', ['message' => 'login or password invalid'])
+                        $this->twig->render('Login.twig', ['message' => 'login or password invalid'])
                     );
                 }
             }
             else {
                 $this->response->getBody()->write(
-                    $this->view->render('Login.twig', ['message' => 'Vous devez renseigner les deux champs!'])
+                    $this->twig->render('Login.twig', ['message' => 'Vous devez renseigner les deux champs!'])
                 );
             }
         }
