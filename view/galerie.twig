@@ -7,6 +7,7 @@
     {% endif %}
     <div>
         <p>Titre: {{ galerie.nom }}</p>
+        <p>Galerie {% if galerie.isPrivate == true %} privé {% else %} public {% endif %}</p>
         <p>Createur: {{ galerie.owner().identifiant }}</p>
         <p>Description: {{ galerie.description }}</p>
     </div>

@@ -34,7 +34,7 @@ class UpdateGalerieAction extends Action
             }
             $galerie->nom=$_POST['titre'];
             $galerie->description=$_POST['description'];
-            $galerie->isPrivate=false;
+            $galerie->isPrivate=$_POST['type']==='private';
             $galerie->save();
             $url = RouteContext::fromRequest($this->request)->getRouteParser()->urlFor('galerie', ['id'=>$galerie->id]);
             return $this->response->withHeader('location', $url);

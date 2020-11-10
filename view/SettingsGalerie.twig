@@ -5,6 +5,12 @@
         <div>
             <label for="titre">Titre:</label>
             <input type="text" name="titre" id="titre" value="{{ galerie.nom }}">
+            <fieldset id="type">
+                <label for="public">Public:</label>
+                <input type="radio" id="type" name="type" value="public" {% if galerie.isPrivate == false %} checked {% endif %}>
+                <label for="private">Privée:</label>
+                <input type="radio" id="type" name="type" value="private" {% if galerie.isPrivate == true %} checked {% endif %}>
+            </fieldset>
             <label for="description">Description:</label>
             <input type="text" name="description" id="description" value="{{ galerie.description }}">
         </div>

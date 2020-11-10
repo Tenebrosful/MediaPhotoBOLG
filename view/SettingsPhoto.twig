@@ -1,10 +1,10 @@
 {% extends "base.twig" %}
 {% block content %}
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         <div>
             <input type="file" name="image" id="image" accept="image/png, image/jpeg" required>
             <label for="titre">Titre:</label>
-            <input type="text" name="titre" id="titre" value="{{ photo.nom }}" required>
+            <input type="text" name="titre" id="titre" value="{{ photo.titre }}" required>
             <label for="description">Description:</label>
             <input type="text" name="description" id="description" value="{{ photo.description }}" required>
         </div>
