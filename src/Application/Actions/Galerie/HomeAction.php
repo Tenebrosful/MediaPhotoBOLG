@@ -21,8 +21,10 @@ class HomeAction extends Action
      */
     protected function action(): Response
     {
+        $galeries = Galerie::limit(3)->get();
+
         $this->response->getBody()->write(
-            $this->twig->render('Home.twig', array())
+            $this->twig->render('Home.twig', ["galeries" => $galeries])
         );
         return $this->response;
     }

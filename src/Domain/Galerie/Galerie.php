@@ -40,9 +40,22 @@ class Galerie extends Model
      * @param int $id Id de la galerie
      * @return Galerie Galerie correspondant à l'id passé en paramètre
      */
-    static function getById(int $id): Galerie
+    static function getById(int $id)
     {
-        return Galerie::find($id)->get();
+        return Galerie::where('id', '=', $id)->first();
+    }
+
+    public static function getFilter(bool $isPublic, bool $isPrivate, bool $isShare)
+    {
+        $query = Galerie::query();
+        if($isPublic)
+            $query = $query->where("isPrivate", "=", false);
+        if($isPrivate)
+            $query = $query->where("id_owner", "=", $_SESSION['user']->id);
+        $result = $query->get();
+        if($isShare)
+            $result = $result->merge(Galerie::query()->join('usergalerie', 'id', '=', 'id_galerie')->where('id_user', '=', $_SESSION['user']->id)->get());
+        return $result;
     }
 
     /**

@@ -1,0 +1,36 @@
+{% extends "base.twig" %}
+{% block content %}
+    {% if session.user is defined %}
+    <div class="filter">
+        <form method="GET">
+            <label for="public">Public</label>
+            <input type="checkbox" id="public" name="public" value="checked" {{ publicchecked}}>
+
+            <label for="private">Mes galeries</label>
+            <input type="checkbox" id="private" name="private" value="checked" {{ privatechecked }}>
+
+            <label for="share">Partagé avec moi</label>
+            <input type="checkbox" id="share" name="share" value="checked" {{ sharechecked }}>
+
+            <input type="submit" value="Rechercher">
+        </form>
+    </div>
+        <a href="/galerie/new/settings">Nouvelle galerie</a>
+    {% endif %}
+    <div class="galerie-list">
+        {% if galeries %}
+            {% for galerie in galeries %}
+                <div class="galerie-item" href="/galerie/{{ galerie.id }}">
+                    <a href="/galerie/{{ galerie.id }}">
+                    <img src="{{ galerie.getThumbnail().url }}" alt="">
+                    <div>
+                        <h3>{{ galerie.nom }}</h3>
+                        <p>Nombre de photo(s): {{ galerie.photoCount() }}</p>
+                        <p>Description: {{ galerie.description }}</p>
+                    </div>
+                    </a>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}

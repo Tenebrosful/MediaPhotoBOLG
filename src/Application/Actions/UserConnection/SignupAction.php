@@ -47,8 +47,10 @@ class SignupAction extends Action
             }
             else
                 $message="Vous devez renseigner toutes les informations pour pouvoir vous inscrire!";
-            $this->request->getBody()->write($this->twig->render('Signup.twig', ['message'=>$message]));
-            return $this->request;
+            $this->response->getBody()->write(
+                $this->twig->render('Signup.twig', ['message'=>$message])
+            );
+            return $this->response;
         }
     }
 }

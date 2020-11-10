@@ -1,0 +1,11 @@
+{% extends "base.twig" %}
+{% block content %}
+    <img src="{{ galerie.photo.url }}">
+    <a href="{{ galerie.id }}/photos">Voir la galerie</a>
+    <a href="{{ galerie.id }}/settings">Settings</a>
+    <div>
+        <p>Titre: {{ galerie.nom }}</p>
+        <p>Createur: {{ galerie.owner().identifiant }}</p>
+        <p>Description: {{ galerie.descrition }}</p>
+    </div>
+{% endblock %}

@@ -39,7 +39,7 @@ class User extends Model
      * @param int $id Id de l'utilisateur
      * @return User Utilisateur correspondant à l'id passé en paramètre
      */
-    static function getById(int $id): User
+    static function getById(int $id)
     {
         return User::find($id)->get();
     }

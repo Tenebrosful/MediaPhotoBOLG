@@ -20,6 +20,11 @@ class ViewProfilAction extends Action
      */
     protected function action(): Response
     {
-        // TODO: Implement action() method.
+        if(isset($_SESSION['user'])){
+            $this->response->getBody()->write(
+                $this->twig->render('Profil.twig', array())
+            );
+        }
+        return $this->response;
     }
 }

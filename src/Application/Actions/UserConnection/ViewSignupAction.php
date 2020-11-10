@@ -22,7 +22,7 @@ class ViewSignupAction extends Action
     {
         if(!isset($_SESSION["user"])) {
             $this->response->getBody()->write(
-                $this->twig->render('Signup.twig', array())
+                $this->twig->render('Signup.twig', [])
             );
             return $this->response;
         }

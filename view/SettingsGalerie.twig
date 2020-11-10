@@ -1,0 +1,14 @@
+{% extends "base.twig" %}
+{% block content %}
+    <img src="{{ galerie.getThumbnail().url }}" alt="">
+    <form method="POST">
+        <div>
+            <label for="titre">Titre:</label>
+            <input type="text" name="titre" id="titre" value="{{ galerie.nom }}">
+            <label for="description">Description:</label>
+            <input type="text" name="description" id="description" value="{{ galerie.description }}">
+        </div>
+        <input type="submit" value="Sauvegarder">
+    </form>
+    <a href="../{{ galerie.id }}">Annuler</a>
+{% endblock %}

@@ -60,10 +60,12 @@ return function (App $app) {
         $group->post('', UpdateProfilAction::class);
     })->add(LoggedMiddleware::class);
 
-    $app->get("/galeries", ListGalerieAction::class);
+    $app->group('/galeries', function(Group $group){
+        $group->get('', ListGalerieAction::class)->setName('galeries');
+    });
 
     $app->group("/galerie", function(Group $group) {
-        $group->get('/{id}', ViewGalerieAction::class);
+        $group->get('/{id}', ViewGalerieAction::class)->setName('galerie');
 
         $group->get('/{id}/settings', SettingGalerieAction::class);
         $group->post('/{id}/settings', UpdateGalerieAction::class);
