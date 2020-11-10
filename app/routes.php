@@ -69,7 +69,7 @@ return function (App $app) {
 
         $group->get('/{id}/settings', SettingGalerieAction::class)->add(LoggedMiddleware::class);
         $group->post('/{id}/settings', UpdateGalerieAction::class)->add(LoggedMiddleware::class);
-        $group->delete('/{id}/settings', DeleteGalerieAction::class)->add(LoggedMiddleware::class);
+        $group->post('/{id}/delete', DeleteGalerieAction::class)->add(LoggedMiddleware::class);
 
         $group->get('/{id}/photos', ListGaleriePhotoAction::class);
 
@@ -77,6 +77,6 @@ return function (App $app) {
 
         $group->get('/{id}/photo/{photo}/settings', SettingPhotoAction::class)->add(LoggedMiddleware::class);
         $group->post('/{id}/photo/{photo}/settings', UpdatePhotoAction::class)->add(LoggedMiddleware::class);
-        $group->delete('/{id}/photo/{photo}/settings', DeletePhotoAction::class)->add(LoggedMiddleware::class);
+        $group->post('/{id}/photo/{photo}/delete', DeletePhotoAction::class)->add(LoggedMiddleware::class);
     });
 };

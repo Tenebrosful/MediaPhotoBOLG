@@ -11,4 +11,7 @@
         <input type="submit" value="Sauvegarder">
     </form>
     <a href="../{{ galerie.id }}">Annuler</a>
+    <form method="POST" action="/galerie/{{ galerie.id }}/delete">
+    <input type="submit" value="Delete">
+    </form>
 {% endblock %}
