@@ -93,6 +93,11 @@ class Galerie extends Model
         return $this->belongsToMany("App\Domain\Image\Image", "imagegalerie", "id_galerie", "id_image")->get();
     }
 
+    function image($idimage)
+    {
+        return $this->belongsToMany("App\Domain\Image\Image", "imagegalerie", "id_galerie", "id_image")->where('id_image', '=', $idimage)->first();
+    }
+
     /**
      * @return User Créateur de la galerie
      */

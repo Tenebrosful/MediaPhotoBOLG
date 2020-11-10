@@ -40,8 +40,8 @@ class Image extends Model
      * @param int $id Id de l' image
      * @return Image Image correspondant à l'id passé en paramètre
      */
-    static function getById(int $id): Image
+    static function getById(int $id)
     {
-        return Image::find($id)->get();
+        return Image::where('id', '=', $id)->first();
     }
 }

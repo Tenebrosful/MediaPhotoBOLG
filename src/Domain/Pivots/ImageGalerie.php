@@ -21,7 +21,7 @@ class ImageGalerie extends Pivot
         'id_image'
     ];
 
-    protected $incrementing = false;
+    public $incrementing = false;
 
     /**
      * Liste des colones modifiables

@@ -1,0 +1,12 @@
+{% extends "base.twig" %}
+{% block content %}
+    <img src="{{ image.url }}">
+    <a href="../../{{ galerie.id }}">Retourner à la galerie</a>
+    {% if galerie.canAccessSettings() %}
+        <a href="../photo/{{ photo.id }}/settings">Settings</a>
+    {% endif %}
+    <div>
+        <p>Titre: {{ photo.titre }}</p>
+        <p>Description: {{ photo.description }}</p>
+    </div>
+{% endblock %}

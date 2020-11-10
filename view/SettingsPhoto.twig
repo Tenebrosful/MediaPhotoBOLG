@@ -1,0 +1,17 @@
+{% extends "base.twig" %}
+{% block content %}
+    <form method="POST">
+        <div>
+            <input type="file" name="image" id="image" accept="image/png, image/jpeg" required>
+            <label for="titre">Titre:</label>
+            <input type="text" name="titre" id="titre" value="{{ photo.nom }}" required>
+            <label for="description">Description:</label>
+            <input type="text" name="description" id="description" value="{{ photo.description }}" required>
+        </div>
+        <input type="submit" value="Sauvegarder">
+    </form>
+    <a href="../{{ galerie.id }}">Annuler</a>
+    <form method="POST" action="/galerie/{{ galerie.id }}/photo/{{ photo.id }}/delete">
+        <input type="submit" value="Delete">
+    </form>
+{% endblock %}

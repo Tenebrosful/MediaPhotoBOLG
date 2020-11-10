@@ -2,7 +2,9 @@
 {% block content %}
     <img src="{{ galerie.getThumbnail().url }}">
     <a href="{{ galerie.id }}/photos">Voir la galerie</a>
+    {% if galerie.canAccessSettings() %}
     <a href="{{ galerie.id }}/settings">Settings</a>
+    {% endif %}
     <div>
         <p>Titre: {{ galerie.nom }}</p>
         <p>Createur: {{ galerie.owner().identifiant }}</p>
