@@ -29,8 +29,26 @@ class UpdatePhotoAction extends Action
             if($galerie!=null && $galerie->canAccessSettings()){
                 if($this->args['photo']==='new'){
                     $image=new Image();
-                    if(!$this->uploadFile($image))
-                        return $this->response->withStatus(404);
+                    $image->titre=$_POST["titre"];
+                    $image->description=$_POST["description"];
+                    switch($this->uploadFile($image)) {
+                        case 1:
+                            $message="L'image est invalide";
+                            break;
+                        case 2:
+                            $message="Le nom de l'image est invalide";
+                            break;
+                        case 3:
+                            $message="Failed";
+                            break;
+                    }
+                    if(isset($message)){
+                        $this->response->getBody()->write(
+                            $this->twig->render('SettingsPhoto.twig', ['message'=>$message, 'photo'=>$image])
+                        );
+                        return $this->response;
+                    }
+
                     $imagegalerie = new ImageGalerie();
                 }
                 else {
@@ -38,10 +56,10 @@ class UpdatePhotoAction extends Action
                     if($image==null){
                         return $this->response->withStatus(404);
                     }
+                    $image->titre=$_POST["titre"];
+                    $image->description=$_POST["description"];
                     $imagegalerie = ImageGalerie::where('id_image', '=', $image->id)->where('id_galerie', '=', $galerie->id)->first();
                 }
-                $image->titre=$_POST["titre"];
-                $image->description=$_POST["description"];
                 $image->save();
 
                 $imagegalerie->id_galerie=$galerie->id;
@@ -65,7 +83,7 @@ class UpdatePhotoAction extends Action
         return bin2hex(random_bytes(4));
     }
 
-    private function uploadFile($image) : bool
+    private function uploadFile($image) : int
     {
         $target_dir = "uploads/";
         $target_file = $target_dir . basename($_FILES["image"]["name"]);
@@ -76,13 +94,13 @@ class UpdatePhotoAction extends Action
         if(isset($_POST["submit"])) {
             $check = getimagesize($_FILES["image"]["tmp_name"]);
             if($check == false) {
-                return false;
+                return 1;
             }
         }
 
 // Check if file already exists
         if (file_exists($target_file)) {
-            return false;
+            return 2;
         }
 
 // Check file size
@@ -94,17 +112,17 @@ class UpdatePhotoAction extends Action
 // Allow certain file formats
         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
             && $imageFileType != "gif" ) {
-            return false;
+            return 1;
         }
 
 // if everything is ok, try to upload file
 
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
             //echo "The file ". htmlspecialchars( basename( $_FILES["image"]["name"])). " has been uploaded.";
-            return true;
+            return 0;
         } else {
             //echo "Sorry, there was an error uploading your file.";
-            return false;
+            return 3;
         }
     }
 }

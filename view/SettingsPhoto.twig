@@ -8,6 +8,9 @@
             <label for="description">Description:</label>
             <input type="text" name="description" id="description" value="{{ photo.description }}" required>
         </div>
+        {% if message is defined %}
+        <p class="error">{{ message }}</p>
+        {% endif %}
         <input type="submit" value="Sauvegarder">
     </form>
     <a href="../{{ galerie.id }}">Annuler</a>

@@ -1,0 +1,10 @@
+{% extends "base.twig" %}
+{% block content %}
+    <div class="photo-list">
+        {% if photos is defined %}
+            {% for photo in photos %}
+                <img class="photo-item" src="{{ photo.url }}" alt="">
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}
