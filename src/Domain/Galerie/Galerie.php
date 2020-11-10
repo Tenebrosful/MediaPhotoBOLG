@@ -49,14 +49,23 @@ class Galerie extends Model
 
     public static function getFilter(bool $isPublic, bool $isPrivate, bool $isShare)
     {
-        $query = Galerie::query();
+        $result=null;
         if($isPublic)
-            $query = $query->where("isPrivate", "=", false);
-        if($isPrivate)
-            $query = $query->where("id_owner", "=", $_SESSION['user']->id);
-        $result = $query->get();
-        if($isShare)
-            $result = $result->merge(Galerie::query()->join('usergalerie', 'id', '=', 'id_galerie')->where('id_user', '=', $_SESSION['user']->id)->get());
+            $result = Galerie::where("isPrivate", "=", false)->get();
+        if($isPrivate) {
+            $query = Galerie::where("id_owner", "=", $_SESSION['user']->id)->get();
+            if($result!=null)
+                $result = $result->merge($query);
+            else
+                $result = $query;
+        }
+        if($isShare) {
+            $query = Galerie::query()->join('usergalerie', 'id', '=', 'id_galerie')->where('id_user', '=', $_SESSION['user']->id)->get();
+            if($result!=null)
+                $result = $result->merge($query);
+            else
+                $result = $query;
+        }
         return $result;
     }
 
