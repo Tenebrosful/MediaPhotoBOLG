@@ -2,6 +2,8 @@
 
 namespace App\Domain\Galerie;
 
+use App\Domain\Image\Image;
+use App\Domain\Pivots\ImageGalerie;
 use App\Domain\User\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -88,5 +90,28 @@ class Galerie extends Model
     function owner()
     {
         return User::getById($this->id_owner);
+    }
+
+    public function canAccessSettings() : bool
+    {
+        if($this->id_owner===$_SESSION['user']->id)
+            return true;
+        $users = $this->users();
+        foreach($users as $user){
+            if($user->id_user===$_SESSION['user']->id){
+                return $user->canModify;
+            }
+        }
+        return false;
+    }
+
+    public function photoCount() : int
+    {
+        return Galerie::query()->join('imagegalerie', 'id_galerie', '=', 'id')->where('id', '=', $this->id)->count();
+    }
+
+    public function getThumbnail()
+    {
+        return Image::query()->join('imagegalerie', 'id_image', '=', 'id')->where('id_galerie', '=', $this->id)->first();
     }
 }

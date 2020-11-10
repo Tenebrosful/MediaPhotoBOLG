@@ -30,7 +30,7 @@ class SettingGalerieAction extends Action
             }
             else {
                 $galerie = Galerie::getById($this->args['id']);
-                if($galerie!=null){
+                if($galerie!=null && $galerie->canAccessSettings()){
                     $this->response->getBody()->write(
                         $this->twig->render('SettingsGalerie.twig', array('galerie'=>$galerie))
                     );

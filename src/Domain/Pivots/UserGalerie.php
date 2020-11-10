@@ -30,7 +30,8 @@ class UserGalerie extends Pivot
      */
     protected $fillable = [
         'id_user',
-        'id_galerie'
+        'id_galerie',
+        'canModify'
     ];
 
     /**

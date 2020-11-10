@@ -67,16 +67,16 @@ return function (App $app) {
     $app->group("/galerie", function(Group $group) {
         $group->get('/{id}', ViewGalerieAction::class)->setName('galerie');
 
-        $group->get('/{id}/settings', SettingGalerieAction::class);
-        $group->post('/{id}/settings', UpdateGalerieAction::class);
-        $group->delete('/{id}/settings', DeleteGalerieAction::class);
+        $group->get('/{id}/settings', SettingGalerieAction::class)->add(LoggedMiddleware::class);
+        $group->post('/{id}/settings', UpdateGalerieAction::class)->add(LoggedMiddleware::class);
+        $group->delete('/{id}/settings', DeleteGalerieAction::class)->add(LoggedMiddleware::class);
 
         $group->get('/{id}/photos', ListGaleriePhotoAction::class);
 
         $group->get('/{id}/photo/{photo}', ViewPhotoAction::class);
 
-        $group->get('/{id}/photo/{photo}/settings', SettingPhotoAction::class);
-        $group->post('/{id}/photo/{photo}/settings', UpdatePhotoAction::class);
-        $group->delete('/{id}/photo/{photo}/settings', DeletePhotoAction::class);
+        $group->get('/{id}/photo/{photo}/settings', SettingPhotoAction::class)->add(LoggedMiddleware::class);
+        $group->post('/{id}/photo/{photo}/settings', UpdatePhotoAction::class)->add(LoggedMiddleware::class);
+        $group->delete('/{id}/photo/{photo}/settings', DeletePhotoAction::class)->add(LoggedMiddleware::class);
     });
 };

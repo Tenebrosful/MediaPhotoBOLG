@@ -41,7 +41,7 @@ class User extends Model
      */
     static function getById(int $id)
     {
-        return User::find($id)->get();
+        return User::find($id)->first();
     }
 
     /**
