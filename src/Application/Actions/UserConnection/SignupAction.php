@@ -6,10 +6,9 @@ namespace App\Application\Actions\UserConnection;
 
 use App\Application\Actions\Action;
 use App\Domain\DomainException\DomainRecordNotFoundException;
+use App\Domain\User\User;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Exception\HttpBadRequestException;
-
-use App\Domain\User\User;
 
 class SignupAction extends Action
 {
@@ -25,14 +24,14 @@ class SignupAction extends Action
         if(isset($_SESSION['user']))
             return $this->response->withHeader('location', 'home');
         else {
-            if(isset($_POST['login']) && isset($_POST['password'])  && isset($_POST['passwordConfirmation'])  && isset($_POST['email'])) {
-                if($_POST['password']===$_POST['passwordConfirmation']) {
-                    $login = $_POST['login'];
+            if (!empty($_POST['login']) && !empty($_POST['password']) && !empty($_POST['passwordConfirmation']) && !empty($_POST['email'])) {
+                if ($_POST['password'] === $_POST['passwordConfirmation']) {
+                    $login = filter_var($_POST['login'], FILTER_SANITIZE_STRING);
                     if (User::getByIdentifiant($login) == null) {
                         $user = new User;
                         $user->identifiant = $login;
                         $user->password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-                        $user->email = $_POST['email'];
+                        $user->email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
                         $user->save();
                         $user = User::getByIdentifiant($login);
                         $_SESSION['user'] = $user;
