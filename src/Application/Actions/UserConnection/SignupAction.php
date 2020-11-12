@@ -31,7 +31,7 @@ class SignupAction extends Action
                         $user = new User;
                         $user->identifiant = $login;
                         $user->password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-                        $user->email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
+                        $user->email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
                         $user->save();
                         $user = User::getByIdentifiant($login);
                         $_SESSION['user'] = $user;
