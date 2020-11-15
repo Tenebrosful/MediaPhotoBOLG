@@ -35,7 +35,7 @@ Capsule::schema()->create('galerie', function ($table) {
     $table->increments('id');
     $table->boolean('isPrivate');
     $table->string('nom');
-    $table->string('description');
+    $table->text('description');
     $table->integer('id_owner')->unsigned();
     $table->foreign('id_owner')->references('id')->on('user')->onDelete('cascade');
     $table->timestamps();
@@ -54,7 +54,7 @@ Capsule::schema()->create('image', function ($table) {
     $table->increments('id');
     $table->string('url')->unique();
     $table->string('titre');
-    $table->string('description');
+    $table->text('description');
     $table->timestamps();
 });
 
