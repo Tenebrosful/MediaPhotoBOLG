@@ -2,11 +2,15 @@ ul {
     list-style-type: none;
     overflow: hidden;
     background-color: #55b2ff;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 li {
     float: left;
 }
+
 li a {
     display: block;
     color: black;
@@ -25,14 +29,6 @@ li a {
 #description {
     width: 75%;
     height: 75px;
-}
-
-.creagalerie {
-    width: 500px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 3px 3px 10px 0px grey;
 }
 
 input[type=submit] {
