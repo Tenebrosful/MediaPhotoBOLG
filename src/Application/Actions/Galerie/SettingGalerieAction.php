@@ -25,7 +25,7 @@ class SettingGalerieAction extends Action
             if($this->args['id']==='new'){
                 $galerie=new Galerie();
                 $this->response->getBody()->write(
-                    $this->twig->render('SettingsGalerie.twig', array('galerie'=>$galerie))
+                    $this->twig->render('SettingsGalerie.twig', array('galerie'=>$galerie, 'new'=>true))
                 );
             }
             else {

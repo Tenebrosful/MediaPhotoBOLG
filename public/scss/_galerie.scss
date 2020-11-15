@@ -1,0 +1,78 @@
+$backgroundColor: #C6C2C1 !default;
+
+@mixin thumbnail($height: 60vh) {
+  max-height: $height;
+  max-width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+@mixin galerie() {
+  background-color: $backgroundColor;
+  max-width: 100vw;
+  margin: 20px;
+  padding: 20px;
+  border: 2px darken($backgroundColor, 20%) solid;
+  & > * {
+    box-sizing: border-box;
+  }
+  .thumbnail {
+    @include thumbnail()
+  }
+}
+
+@mixin galerieItem(){
+  display: flex;
+  flex-direction: row;
+  & .thumbnail {
+    @include thumbnail(30vh);
+    display: inline-block;
+    margin-right: 20px;
+  }
+  & .info {
+    display: inline-block;
+  }
+  background-color: $backgroundColor;
+  max-width: 100vw;
+  margin: 20px;
+  padding: 20px;
+  border: 2px darken($backgroundColor, 20%) solid;
+}
+
+@mixin homeGalerie($color: orange) {
+  @include galerie();
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+@mixin galerieSettings() {
+  @include galerie();
+  fieldset {
+    border: none;
+  }
+  .info {
+    form {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+      & > div {
+        margin-bottom: 5px;
+
+        & > label {
+          text-decoration: underline;
+        }
+      }
+    }
+    input.submit {
+      width: fit-content;
+    }
+  }
+  form {
+    margin: 10px 0 10px 0;
+  }
+}

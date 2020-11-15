@@ -1,12 +1,16 @@
 {% extends "base.twig" %}
 {% block content %}
-    <img src="{{ photo.url }}">
-    <a href="../../{{ galerie.id }}">Retourner à la galerie</a>
+    <main class="homePhoto">
+    <img class="photo" src="{{ photo.url }}">
+        <div class="buttons">
+    <a class="button" href="../../{{ galerie.id }}">Retourner à la galerie</a>
     {% if galerie.canAccessSettings() %}
-        <a href="../photo/{{ photo.id }}/settings">Settings</a>
+        <a class="button" href="../photo/{{ photo.id }}/settings">Settings</a>
     {% endif %}
+        </div>
     <div>
         <p>Titre: {{ photo.titre }}</p>
         <p>Description: {{ photo.description }}</p>
     </div>
+    </main>
 {% endblock %}

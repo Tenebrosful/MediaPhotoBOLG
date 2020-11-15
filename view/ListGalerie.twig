@@ -22,8 +22,8 @@
             {% for galerie in galeries %}
                 <div class="galerie-item" href="/galerie/{{ galerie.id }}">
                     <a href="/galerie/{{ galerie.id }}">
-                    <img src="{{ galerie.getThumbnail().url }}" alt="">
-                    <div>
+                    <img class="thumbnail" src="{{ galerie.getThumbnail().url }}" alt="">
+                    <div class="info">
                         <h3>{{ galerie.nom }}</h3>
                         <p>Nombre de photo(s): {{ galerie.photoCount() }}</p>
                         <p>Description: {{ galerie.description }}</p>

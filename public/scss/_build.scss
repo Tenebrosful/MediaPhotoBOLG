@@ -1,0 +1,49 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+/* nav */
+@media screen and (orientation: landscape) and (min-width:800px) {
+	.menu {
+		@include menu();
+	}
+}
+@media screen and (orientation: landscape) and (max-width:800px) {
+	.menu{
+		@include menu(space-evenly);
+	}
+}
+@media screen and (orientation: portrait) {
+	.menu{
+		@include menu(center, column, 1px white solid);
+	}
+}
+/* affichage liste photos */
+.photo-list {
+	@include photoList();
+}
+
+/* affichage d'une galerie dans une liste */
+.galerie-item {
+	@include galerieItem();
+}
+
+/* affichage d'une galerie */
+.homeGalerie {
+	@include homeGalerie();
+}
+/* affichage galerie settings */
+.galerieSettings {
+	@include galerieSettings();
+}
+
+/* affichage d'une image */
+.homePhoto {
+	@include homePhoto();
+}
+
+/* affichage boutton */
+.button {
+	@include button();
+}

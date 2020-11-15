@@ -3,7 +3,9 @@
     <div class="photo-list">
         {% if photos is defined %}
             {% for photo in photos %}
+                <a href="./photo/{{ photo.id }}">
                 <img class="photo-item" src="{{ photo.url }}" alt="">
+                </a>
             {% endfor %}
         {% endif %}
     </div>

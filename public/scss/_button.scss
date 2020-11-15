@@ -1,0 +1,11 @@
+@mixin button($color: orange){
+  margin: 10px;
+  text-decoration: none;
+  color: white;
+  background-color: $color;
+  padding: 10px;
+  border: none;
+  &:hover {
+    background-color: darken($color, 10%);
+  }
+}

@@ -108,7 +108,7 @@ class Galerie extends Model
 
     public function canAccessSettings() : bool
     {
-        if($this->id_owner===$_SESSION['user']->id)
+        if(isset($_SESSION['user']) && $this->id_owner===$_SESSION['user']->id)
             return true;
         $users = $this->users();
         foreach($users as $user){

@@ -1,0 +1,43 @@
+$mainColor: black !default;
+$padding: 10px !default;
+
+@mixin menu($align:flex-start, $orientation:row, $bottomborder:none) {
+	position: relative;
+	background-color: $mainColor;
+	top: 0;
+	left: 0;
+	width: 100%;
+	 > * {
+		 margin: 0;
+		 padding: 0;
+	 }
+	ul {
+		list-style-type: none;
+		display: flex;
+		flex-direction: $orientation;
+		justify-content: $align;
+		text-align: center;
+		height: fit-content;
+	}
+	li>a {
+		box-sizing: border-box;
+		color: white;
+		text-decoration:none;
+		padding: $padding;
+		&:hover {
+			background-color: darken($mainColor, 10%);
+		}
+	}
+	li {
+		flex: 0 0 10%;
+		border-bottom: $bottomborder;
+	}
+	/*
+	.sous {
+		display: none;
+	}
+	.deroulant:hover .sous {
+		display: flex;
+	}
+	*/
+}

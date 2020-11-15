@@ -11,10 +11,10 @@
         {% if message is defined %}
         <p class="error">{{ message }}</p>
         {% endif %}
-        <input type="submit" value="Sauvegarder">
+        <input class="button" type="submit" value="Sauvegarder">
     </form>
-    <a href="../{{ galerie.id }}">Annuler</a>
+    <a class="button" href="../{{ galerie.id }}">Annuler</a>
     <form method="POST" action="/galerie/{{ galerie.id }}/photo/{{ photo.id }}/delete">
-        <input type="submit" value="Delete">
+        <input class="button" type="submit" value="Delete">
     </form>
 {% endblock %}
