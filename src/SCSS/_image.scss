@@ -1,0 +1,14 @@
+@import "variables";
+
+#titreImage {
+  text-align: center;
+  background-color: $image_info_bg;
+  padding: 10px;
+  margin: 15px 10px 5px 10px;
+  border: solid 1px $image_info_border_color;
+}
+
+#descriptionImage {
+  @extend #titreImage;
+  text-align: start;
+}

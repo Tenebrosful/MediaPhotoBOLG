@@ -1,0 +1,75 @@
+@import "variables";
+
+nav {
+  background-color: $navbar_bg;
+  padding: 10px 0;
+
+  & > ul {
+    display: none;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    padding-inline-start: 0;
+    padding: 0 20px;
+    margin: 0;
+
+    @media screen and (min-width: 1000px) {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+    }
+
+    & > li {
+      width: 80%;
+      flex: 1 1 0;
+      padding: 20px 0;
+      border-bottom: solid 1px $navbar_separateur;
+      text-align: center;
+
+      &:last-child {
+        border: none;
+      }
+
+      @media screen and (min-width: 1000px) {
+        width: auto;
+        padding: 10px 20px;
+        flex: 0 0 auto;
+        border-bottom: none;
+        border-right: solid 1px $navbar_separateur;
+
+        &.right {
+          margin-left: auto;
+        }
+      }
+    }
+  }
+}
+
+.deroulant {
+  @extend nav;
+
+  & > ul {
+    display: flex;
+    margin: 5px 0;
+    border: solid 1px $navbar_separateur;
+    @media screen and (min-width: 1000px) {
+      justify-content: center;
+      border: none;
+      & > li {
+        flex: 1 1 0;
+      }
+    }
+  }
+}
+
+nav > button {
+  background-color: transparent;
+  border: solid white 1px;
+  border-radius: 5px;
+  margin: 5px;
+
+  @media screen and (min-width: 1000px) {
+    display: none;
+  }
+}

@@ -1,12 +1,14 @@
 {% extends "base.twig" %}
 {% block content %}
+    <p id="titreImage">{{ photo.titre }}</p>
     <img src="{{ photo.url }}">
-    <a href="../../{{ galerie.id }}">Retourner à la galerie</a>
+    <p id="descriptionImage">{{ photo.description }}</p>
+    <form method="GET" class="settingsGalerie" action="../../{{ galerie.id }}">
+        <input type="submit" value="Retourner à la galerie">
+    </form>
     {% if galerie.canAccessSettings() %}
-        <a href="../photo/{{ photo.id }}/settings">Settings</a>
+        <form method="GET" class="settingsGalerie" action="../photo/{{ photo.id }}/settings">
+            <input type="submit" value="Settings">
+        </form>
     {% endif %}
-    <div>
-        <p>Titre: {{ photo.titre }}</p>
-        <p>Description: {{ photo.description }}</p>
-    </div>
 {% endblock %}

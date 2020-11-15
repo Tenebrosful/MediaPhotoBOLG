@@ -1,0 +1,27 @@
+@import "variables";
+
+body {
+  color: $body_color;
+  background-color: $body_bg;
+  font-family: $body_font-family;
+  font-size: 14px;
+}
+
+a, a:visited, a:hover {
+  color: $a_color;
+  text-decoration: $a_text_decoration;
+}
+
+a:hover {
+  font-weight: $a_hover_font-weight;
+}
+
+img {
+  max-width: 100%;
+}
+
+button, input, textarea {
+  box-shadow: none;
+  color: inherit;
+  background-color: $button_bg_default;
+}

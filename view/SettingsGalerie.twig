@@ -1,24 +1,37 @@
 {% extends "base.twig" %}
 {% block content %}
     <img src="{{ galerie.getThumbnail().url }}" alt="">
-    <form method="POST">
+    <form method="POST" class="settingsGalerie">
         <div>
-            <label for="titre">Titre:</label>
-            <input type="text" name="titre" id="titre" value="{{ galerie.nom }}">
+            <div>
+                <label for="titre">Titre</label>
+                <input type="text" name="titre" id="titre" value="{{ galerie.nom }}" required>
+            </div>
             <fieldset id="type">
-                <label for="public">Public:</label>
-                <input type="radio" id="type" name="type" value="public" {% if galerie.isPrivate == false %} checked {% endif %}>
-                <label for="private">Privée:</label>
-                <input type="radio" id="type" name="type" value="private" {% if galerie.isPrivate == true %} checked {% endif %}>
+                <label for="public">Public</label>
+                <input type="radio" id="type" name="type"
+                       value="public" {% if galerie.isPrivate == false %} checked {% endif %}>
+                <label for="private">Privée</label>
+                <input type="radio" id="type" name="type"
+                       value="private" {% if galerie.isPrivate == true %} checked {% endif %}>
             </fieldset>
-            <label for="description">Description:</label>
-            <input type="text" name="description" id="description" value="{{ galerie.description }}">
+            <div>
+                <label for="description">Description</label>
+                <textarea type="text" style="height: 200px; resize: vertical" name="description" id="description"
+                          required>{{ galerie.description }}</textarea>
+            </div>
         </div>
         <input type="submit" value="Sauvegarder">
     </form>
-    <a href="../{{ galerie.id }}">Annuler</a>
-    <a href="../{{ galerie.id }}/photo/new/settings">Ajouter une photo</a>
-    <form method="POST" action="/galerie/{{ galerie.id }}/delete">
-    <input type="submit" value="Delete">
-    </form>
+    {% if galerie.id != '' %}
+        <form method="GET" class="settingsGalerie" action="../{{ galerie.id }}">
+            <input type="submit" value="Annuler">
+        </form>
+        <form method="GET" class="settingsGalerie" action="../{{ galerie.id }}/photo/new/settings">
+            <input type="submit" value="Ajouter une photo">
+        </form>
+        <form method="POST" class="settingsGalerie" action="/galerie/{{ galerie.id }}/delete">
+            <input type="submit" value="Delete">
+        </form>
+    {% endif %}
 {% endblock %}

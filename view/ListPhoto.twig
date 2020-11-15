@@ -3,7 +3,8 @@
     <div class="photo-list">
         {% if photos is defined %}
             {% for photo in photos %}
-                <img class="photo-item" src="{{ photo.url }}" alt="">
+                <a href="photo/{{ photo.id }}"><img title="Titre : {{ photo.titre }}
+Description : {{ photo.description }}" class="photo-item" src="{{ photo.url }}" alt=""></a>
             {% endfor %}
         {% endif %}
     </div>

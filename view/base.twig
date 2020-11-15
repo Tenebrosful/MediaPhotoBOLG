@@ -4,17 +4,21 @@
 <head>
     <!-- Informations sur le site -->
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/css/mediaphoto.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Mediaphoto</title>
 </head>
 <body>
 <nav>
-    <ul>
+    <button onclick="if(document.querySelector('#navlist').style.display === '') document.querySelector('#navlist').style.display = 'flex'; else (document.querySelector('#navlist').style.display !== 'none' ? document.querySelector('#navlist').style.display = 'none' : document.querySelector('#navlist').style.display = 'flex')">
+        Menu
+    </button>
+    <ul id="navlist">
         <li><a href="/home">Home</a></li>
         {% if session.user is defined %}
             <li><a href="/galeries?share=checked&private=checked">Galeries</a></li>
             {% set user = session.user %}
-            <li class="deroulant"><a href="#">{{ user.identifiant }}</a>
+            <li class="deroulant right"><a href="#">{{ user.identifiant }}</a>
                 <ul class="sous">
                     <li><a href="/profil">Profil</a></li>
                     <li><a href="/disconnect">Deconnexion</a></li>
@@ -22,7 +26,7 @@
             </li>
         {% else %}
             <li><a href="/galeries?public=checked">Galeries</a></li>
-            <li><a href="/login">Se connecter</a></li>
+            <li class="right"><a href="/login">Se connecter</a></li>
             <li><a href="/signup">S'inscire</a></li>
         {% endif %}
     </ul>

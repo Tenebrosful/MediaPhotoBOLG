@@ -1,0 +1,30 @@
+@import "variables";
+
+input, textarea {
+  color: inherit;
+  background-color: $input_bg;
+}
+
+.settingsGalerie, .settingsGalerie > div, .settingsGalerie > div > div {
+  display: flex;
+  flex-flow: column nowrap;
+  text-align: center;
+}
+
+.settingsGalerie {
+  padding: 10px 15px;
+}
+
+.settingsGalerie > div {
+  margin: 0 0 10px 0;
+  padding: 15px 5px;
+  border: solid 1px $navbar_separateur;
+}
+
+.settingsGalerie > div > div, fieldset {
+  margin: 0 0 20px 0;
+
+  &:last-child {
+    margin: 0;
+  }
+}
