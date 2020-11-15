@@ -86,14 +86,14 @@ class UpdatePhotoAction extends Action
     private function uploadFile($image) : int
     {
         $target_dir = "uploads/";
-        $target_file = $target_dir . basename($_FILES["image"]["name"]);
-        $image->url="/".$target_file;
-        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        $target_file = $target_dir . rand() . "_" . filter_var($_FILES['image']['name'], FILTER_SANITIZE_URL);
+        $image->url = "/" . $target_file;
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
 // Check if image file is a actual image or fake image
-        if(isset($_POST["submit"])) {
+        if (isset($_POST["submit"])) {
             $check = getimagesize($_FILES["image"]["tmp_name"]);
-            if($check == false) {
+            if ($check == false) {
                 return 1;
             }
         }
