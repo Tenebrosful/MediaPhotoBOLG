@@ -1,14 +1,23 @@
 {% extends "base.twig" %}
 {% block content %}
-    <img src="{{ galerie.getThumbnail().url }}">
-    <a href="{{ galerie.id }}/photos">Voir la galerie</a>
-    {% if galerie.canAccessSettings() %}
-    <a href="{{ galerie.id }}/settings">Settings</a>
-    {% endif %}
-    <div>
-        <p>Titre: {{ galerie.nom }}</p>
-        <p>Galerie {% if galerie.isPrivate == true %} privé {% else %} public {% endif %}</p>
-        <p>Createur: {{ galerie.owner().identifiant }}</p>
-        <p>Description: {{ galerie.description }}</p>
+
+    <h3>Voici la galerie {{ galerie.nom }}</h3>
+    <div class="galerie-details">
+        <div class="image">
+            <img src="{{ galerie.getThumbnail().url }}">
+        </div>
+
+        <div class="details">
+            <p>Galerie "{{ galerie.nom }}" {% if galerie.isPrivate == true %} privé {% else %} public {% endif %}</p>
+            <p>Créée par: {{ galerie.owner().identifiant }}</p>
+
+        </div>
+
     </div>
+
+    <a class="btn btn-primary" href="{{ galerie.id }}/photos">Voir la galerie</a>
+    {% if galerie.canAccessSettings() %}
+        <a class="btn btn-dark" href="{{ galerie.id }}/settings">Settings</a>
+    {% endif %}
+
 {% endblock %}

@@ -1,8 +1,11 @@
 {% extends "base.twig" %}
 {% block content %}
+    {% if galerie.getThumbnail().url is defined %}
     <img src="{{ galerie.getThumbnail().url }}" alt="">
-    <form method="POST">
-        <div>
+    {% else %}
+    {% endif %}
+    <form class="form" method="POST">
+        <div class="formGalerie">
             <label for="titre">Titre:</label>
             <input type="text" name="titre" id="titre" value="{{ galerie.nom }}">
             <fieldset id="type">
@@ -14,11 +17,11 @@
             <label for="description">Description:</label>
             <input type="text" name="description" id="description" value="{{ galerie.description }}">
         </div>
-        <input type="submit" value="Sauvegarder">
+        <input class="btn btn-success" type="submit" value="Sauvegarder">
     </form>
-    <a href="../{{ galerie.id }}">Annuler</a>
-    <a href="../{{ galerie.id }}/photo/new/settings">Ajouter une photo</a>
+    <a class="btn btn-dark" href="../{{ galerie.id }}">Annuler</a>
+    <a class="btn btn-primary" href="../{{ galerie.id }}/photo/new/settings">Ajouter une photo</a>
     <form method="POST" action="/galerie/{{ galerie.id }}/delete">
-    <input type="submit" value="Delete">
+        <input class="btn btn-danger" type="submit" value="Delete">
     </form>
 {% endblock %}

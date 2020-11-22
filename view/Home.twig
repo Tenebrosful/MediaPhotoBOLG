@@ -1,11 +1,11 @@
 {% extends "base.twig" %}
 {% block content %}
-    <h2>Quelque Galeries publique</h2>
+    <h2>Quelques Galeries publique</h2>
     <div class="galerie-list">
     {% if galeries is defined %}
         {% for galerie in galeries %}
             <div class="galerie-item">
-                <a href="/galerie/{{ galerie.id }}">
+                <a class="nav-link lien" href="/galerie/{{ galerie.id }}">
                     <img src="{{ galerie.getThumbnail().url }}" alt="">
                     <div>
                         <h3>{{ galerie.nom }}</h3>

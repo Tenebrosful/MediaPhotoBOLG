@@ -2,9 +2,29 @@
 {% block content %}
     <div class="photo-list">
         {% if photos is defined %}
+            {% set i = 0 %}
             {% for photo in photos %}
-                <img class="photo-item" src="{{ photo.url }}" alt="">
+                {% set i = i + 1 %}
+                <input type="checkbox" id="btnControl{{ i }}"/>
+                <label class="btn" for="btnControl{{ i }}"><img class="photo-item{{ i }}" src="{{ photo.url }}" alt="{{ photo.titre }}">
+                <p>{{ photo.titre }}</p>
+                </label>
+
             {% endfor %}
         {% endif %}
+    </div>
+
+    <div aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
     </div>
 {% endblock %}

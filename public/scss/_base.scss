@@ -1,0 +1,69 @@
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+
+
+body {
+
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+
+nav{
+  background-color: white;
+  border-radius: 10px;
+}
+
+.lien{
+  color : black;
+}
+
+.panneauCentre{
+  background-color: lightgray;
+  margin: 8%;
+  padding: 5%;
+  text-align: center;
+}
+
+.container{
+  padding: 5%;
+}
+
+
+img {
+  max-width: 100%;
+  height: 200px;
+}
+
+
+
+@media(min-width: 641px) {
+  .galerie-list{
+    padding: 3%;
+    display: flex;
+    flex-direction: row;
+  }
+
+}
+@media screen and (max-width: 640px) {
+  img{
+    max-width: 70%;
+    height: auto;
+  }
+  .galerie-list{
+    flex-direction: column;
+  }
+
+  body{
+    h1, h2, h3{
+      font-size: 20px;
+    }
+  }
+
+}
+
+@media(max-width: 640px) {
+  nav{
+    flex-flow: column wrap; /*4*/
+  }
+
+}
